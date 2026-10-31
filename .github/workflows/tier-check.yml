@@ -1,0 +1,28 @@
+# Managed by secure-agent-workflow bootstrap. Change the template in
+# secure-agent-workflow/bootstrap/files/tier-check.yml and re-run bootstrap,
+# not this copy. `bootstrap.sh <repo> --update-gate <sha>` moves the pin.
+#
+# Tier check (ADR-003), a required check on the default branch. Separate from
+# gate.yml because it re-runs on every review and the scanners don't need to.
+
+name: tier-check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+  pull_request_review:
+    types: [submitted, dismissed]
+
+permissions: {}
+
+# Only the newest run per PR matters; it reads the PR's current state.
+concurrency:
+  group: tier-check-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  tier:
+    uses: danjamk/secure-agent-workflow/.github/workflows/tier-check.yml@1ea1dc4ec087cbed25f993c0b49b8db5e67aad5d
+    permissions:
+      contents: read
+      pull-requests: read
