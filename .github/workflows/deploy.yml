@@ -107,7 +107,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: danjamk/secure-agent-workflow
-          ref: 0cd634aefdcd98c2ed9182bd7f3dfdc50bcc97e7
+          ref: 42695f8b8f976b4c5cf995e808d170babce5cc96
           path: .saw
           persist-credentials: false
 
@@ -150,7 +150,8 @@ jobs:
           REPO: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           URL: ${{ steps.deploy.outputs.url }}
-          SHA: ${{ github.event.pull_request.head.sha }}
+          BUILD_ID: ${{ steps.deploy.outputs.build-id }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: bash .saw/deploy/cloudflare/comment.sh
 
   staging:
@@ -174,7 +175,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: danjamk/secure-agent-workflow
-          ref: 0cd634aefdcd98c2ed9182bd7f3dfdc50bcc97e7
+          ref: 42695f8b8f976b4c5cf995e808d170babce5cc96
           path: .saw
           persist-credentials: false
 
