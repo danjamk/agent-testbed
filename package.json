@@ -1,0 +1,8 @@
+{
+  "name": "agent-testbed",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "wrangler": "4.151.1"
+  }
+}

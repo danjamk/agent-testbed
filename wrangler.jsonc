@@ -1,0 +1,13 @@
+{
+  // The deploy template uploads dist/index.js, built by `make build`.
+  // Previews deploy as agent-testbed-preview, staging as agent-testbed-staging.
+  "name": "agent-testbed",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": true,
+  "env": {
+    "preview": {},
+    "staging": {}
+  }
+}
