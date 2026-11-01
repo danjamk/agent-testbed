@@ -1,8 +1,11 @@
 {
   "name": "agent-testbed",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "devDependencies": {
     "wrangler": "4.151.1"
+  },
+  "overrides": {
+    "undici": "7.30.1"
   }
 }
