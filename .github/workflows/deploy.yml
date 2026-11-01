@@ -107,7 +107,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: danjamk/secure-agent-workflow
-          ref: fc08c87eb83d749725aac9bc7ed888c525ce0163
+          ref: 0cd634aefdcd98c2ed9182bd7f3dfdc50bcc97e7
           path: .saw
           persist-credentials: false
 
@@ -174,7 +174,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: danjamk/secure-agent-workflow
-          ref: fc08c87eb83d749725aac9bc7ed888c525ce0163
+          ref: 0cd634aefdcd98c2ed9182bd7f3dfdc50bcc97e7
           path: .saw
           persist-credentials: false
 
