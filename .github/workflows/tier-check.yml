@@ -19,7 +19,7 @@ permissions: {}
 
 jobs:
   tier:
-    uses: danjamk/secure-agent-workflow/.github/workflows/tier-check.yml@ef251e3156ca671cf39cae71685da10e8a0d6fdb
+    uses: danjamk/secure-agent-workflow/.github/workflows/tier-check.yml@90ca25c7659c962ed96e2043226d236e481ff2d4
     permissions:
       contents: read
       pull-requests: read
