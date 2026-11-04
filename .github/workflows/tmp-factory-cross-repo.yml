@@ -1,0 +1,36 @@
+# Temporary test for secure-agent-workflow #75. This PR is closed unmerged.
+# Same check as the factory job in deploy/broker/aws/test/cross-repo-test.yml.
+name: tmp-factory-cross-repo
+
+on:
+  pull_request:
+
+permissions: {}
+
+jobs:
+  factory:
+    runs-on: ubuntu-latest
+    environment: factory
+    permissions:
+      id-token: write
+    env:
+      FACTORY_ROLE: ${{ secrets.OTHER_FACTORY_ROLE }}
+      AWS_REGION: us-east-1
+    steps:
+      - name: The factory role refuses this repo's factory environment
+        run: |
+          set -uo pipefail
+          [ -n "$FACTORY_ROLE" ] || { echo "FAIL  OTHER_FACTORY_ROLE is empty"; exit 1; }
+          token="$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com" | jq -r .value)"
+          echo "::add-mask::$token"
+          echo "subject: $(cut -d. -f2 <<<"$token" | tr '_-' '/+' | base64 -d 2>/dev/null | jq -r .sub)"
+          if out="$(aws sts assume-role-with-web-identity --role-arn "$FACTORY_ROLE" \
+              --role-session-name "cross-repo-$GITHUB_RUN_ID" \
+              --web-identity-token "$token" 2>&1)"; then
+            echo "FAIL  factory role: assumed"; exit 1
+          elif grep -q AccessDenied <<<"$out"; then
+            echo "PASS  factory role: refused (AccessDenied)"
+          else
+            echo "FAIL  factory role: unexpected error"; exit 1
+          fi
