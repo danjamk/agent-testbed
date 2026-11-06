@@ -31,3 +31,11 @@ Approved by: None
 - **Decided by:** Build agent
 - **Approved by:** None
 - **Evidence:** Issue #48
+
+### 2026-11-06 Changelog entry wording (#51)
+
+- **Decision:** `CHANGELOG.md` has a plain "Unreleased" list with one entry, "Add a changelog stub." It doesn't follow Keep a Changelog categories.
+- **Why:** The issue asked only for an "Unreleased" heading and one entry. Categories would add structure nobody asked for.
+- **Decided by:** Build agent
+- **Approved by:** None
+- **Evidence:** Issue #51
