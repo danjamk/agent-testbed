@@ -22,3 +22,12 @@ Approved by: None
 - **Decided by:** Build agent
 - **Approved by:** None
 - **Evidence:** Issue #46
+
+### 2026-11-06 files.md covers two files (#48)
+
+- **Decision:** `docs/files.md` has two sections, `src/index.js` and `tools/package.json`. These are the only files under `src/` and `tools/`.
+- **Why:** The issue asked for one section per file. `tools/package.json` is identical to the root `package.json` in content, so I described it by what it does rather than inventing tooling.
+- **Rejected:** Adding sections for root files such as the Makefile. They are outside the issue.
+- **Decided by:** Build agent
+- **Approved by:** None
+- **Evidence:** Issue #48

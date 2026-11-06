@@ -8,3 +8,5 @@ This repo is a testbed for secure-agent-workflow. Nothing here is deployed for r
 Licensed under the MIT License. See [LICENSE](LICENSE).
 
 See the [glossary](docs/glossary.md) for the terms used here.
+
+See the [file guide](docs/files.md) for what is under `src/` and `tools/`.
